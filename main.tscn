@@ -1,3 +1,48 @@
-[gd_scene format=2]
+[gd_scene load_steps=8 format=2]
+
+[sub_resource type="ProceduralSky" id=1]
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 50, 50, 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.427451, 0.686275, 0.894118, 1 )
+
+[sub_resource type="CapsuleMesh" id=5]
+material = SubResource( 4 )
+mid_height = 2.0
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 1, 0.0196078, 0.0196078, 1 )
+
+[sub_resource type="CapsuleMesh" id=7]
+material = SubResource( 6 )
+mid_height = 2.0
 
 [node name="main" type="Spatial"]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.921938, 0.100251, 0.37414, -0.387339, 0.238615, 0.890523, 0, -0.965926, 0.258819, -11, 0, 0 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 50, 50 )
+fov = 60.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="CSGMesh" type="CSGMesh" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 3 )
+
+[node name="CSGMesh2" type="CSGMesh" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -22, 2, 0 )
+mesh = SubResource( 5 )
+
+[node name="CSGMesh3" type="CSGMesh" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 21, 2, 0 )
+mesh = SubResource( 7 )
