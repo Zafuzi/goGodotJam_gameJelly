@@ -1,12 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Soldier/Soldier.gd" type="Script" id=1]
-
-[sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 0.278431, 0.564706, 0.811765, 1 )
+[ext_resource path="res://blue.tres" type="Material" id=2]
 
 [sub_resource type="CapsuleMesh" id=2]
-material = SubResource( 1 )
+material = ExtResource( 2 )
 mid_height = 2.0
 
 [sub_resource type="CapsuleShape" id=3]
@@ -34,3 +32,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
 shape = SubResource( 4 )
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]

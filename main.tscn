@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Soldier/soldier.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Enemy/enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Soldier spawner/soldier spawner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://enemy spawner/enemy spawner.tscn" type="PackedScene" id=2]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -28,8 +28,8 @@ environment = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 3 )
 
-[node name="Soldier" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 3, 0 )
+[node name="StaticBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -32, 0.5, 0 )
 
-[node name="Enemy" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 3, 0 )
+[node name="StaticBody2" parent="." instance=ExtResource( 2 )]
+transform = Transform( -10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 32, 0.5, 0 )

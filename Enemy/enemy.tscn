@@ -1,12 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Enemy/Enemy.gd" type="Script" id=1]
-
-[sub_resource type="SpatialMaterial" id=4]
-albedo_color = Color( 0.87451, 0.188235, 0.188235, 1 )
+[ext_resource path="res://red.tres" type="Material" id=2]
 
 [sub_resource type="CapsuleMesh" id=5]
-material = SubResource( 4 )
+material = ExtResource( 2 )
 mid_height = 2.0
 
 [sub_resource type="CapsuleShape" id=3]

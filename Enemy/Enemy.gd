@@ -41,8 +41,11 @@ func _physics_process(delta):
 
 func _on_Area_body_entered(body):#assign target
 	if body.is_in_group("soldier"):
-		body.hp -= 10
 		enemy = body
 		move = false
+	if body.is_in_group("spawner"):
+		body.hp -= attack
+		queue_free()
+	
 
 

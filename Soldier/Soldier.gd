@@ -4,7 +4,7 @@ var shoot_distance:float = 70
 var close_enemy
 var b = 1
 var hp = 30
-var attack = 4
+var attack = 3
 var move = true
 var speed = Vector3(10,0,0)
 var die = false
@@ -42,9 +42,12 @@ func _physics_process(delta):
 
 func _on_Area_body_entered(body):#assign target
 	if body.is_in_group("enemy"):
-		body.hp -= 10
 		enemy = body
 		move = false
+	if body.is_in_group("spawner"):
+		body.hp -= attack
+		queue_free()
 	
+
 
 
