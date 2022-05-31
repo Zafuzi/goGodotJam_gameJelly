@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Soldier spawner/soldier spawner.tscn" type="PackedScene" id=1]
-[ext_resource path="res://enemy spawner/enemy spawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/EnemySpawner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/SoldierSpawner.tscn" type="PackedScene" id=2]
 
 [sub_resource type="ProceduralSky" id=1]
 
@@ -10,7 +10,7 @@ background_mode = 2
 background_sky = SubResource( 1 )
 
 [sub_resource type="CubeMesh" id=3]
-size = Vector3( 50, 50, 1 )
+size = Vector3( 80, 50, 1 )
 
 [node name="main" type="Spatial"]
 
@@ -20,16 +20,17 @@ transform = Transform( 0.921938, 0.100251, 0.37414, -0.387339, 0.238615, 0.89052
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 50, 50 )
 fov = 60.0
+far = 300.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
 
-[node name="CSGMesh" type="CSGMesh" parent="."]
+[node name="Floor" type="CSGMesh" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 3 )
 
-[node name="StaticBody" parent="." instance=ExtResource( 1 )]
-transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -32, 0.5, 0 )
+[node name="EnemySpawner" parent="." instance=ExtResource( 1 )]
+transform = Transform( -10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 40, 0, 0 )
 
-[node name="StaticBody2" parent="." instance=ExtResource( 2 )]
-transform = Transform( -10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 32, 0.5, 0 )
+[node name="SoldierSpawner" parent="." instance=ExtResource( 2 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -40, 0, 0 )

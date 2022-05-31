@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Materials/red.tres" type="Material" id=1]
+[ext_resource path="res://Scripts/enemySpawner.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/enemy.tscn" type="PackedScene" id=3]
+
+[sub_resource type="SphereMesh" id=2]
+material = ExtResource( 1 )
+
+[sub_resource type="CylinderMesh" id=4]
+material = ExtResource( 1 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 1.5, 1, 1 )
+
+[node name="EnemySpawner" type="Spatial"]
+transform = Transform( -10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 0, 3, 0 )
+script = ExtResource( 2 )
+pawn = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+material_override = ExtResource( 1 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( -2.76256e-08, -0.52, 0, 0.632, -2.27299e-08, 0, 0, 0, 0.632, 0.588, 0, 0 )
+material_override = ExtResource( 1 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( -0.1, 0, -8.74228e-09, 0, 0.1, 0, 8.74228e-09, 0, -0.1, 0.5, 0.202, 0.3 )
+
+[node name="Spatial2" type="Spatial" parent="."]
+transform = Transform( -0.1, 0, -8.74228e-09, 0, 0.1, 0, 8.74228e-09, 0, -0.1, 0.5, 0.202, 4.37114e-08 )
+
+[node name="Spatial3" type="Spatial" parent="."]
+transform = Transform( -0.1, 0, -8.74228e-09, 0, 0.1, 0, 8.74228e-09, 0, -0.1, 0.5, 0.202, -0.3 )
+
+[node name="RespawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Area" type="Area" parent="." groups=["enemy_spawner"]]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 5 )
+
+[connection signal="timeout" from="RespawnTimer" to="." method="_on_RespawnTimer_timeout"]
