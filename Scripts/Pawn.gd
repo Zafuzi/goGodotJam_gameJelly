@@ -42,6 +42,7 @@ func _ready():
 
 func _process(delta):
 	if currentState == STATES.DEAD:
+		$AnimationTree.set("Parameters/Die/Active", true)
 		return
 		
 	if enemy != null and enemy.hp <= 0:

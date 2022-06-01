@@ -661,7 +661,7 @@ filters = [ "Armature/Skeleton:Arm.L", "Armature/Skeleton:Arm.R", "Armature/Skel
 [sub_resource type="AnimationNodeBlend2" id=16]
 
 [sub_resource type="AnimationNodeBlendTree" id=17]
-graph_offset = Vector2( -308.997, 84.4422 )
+graph_offset = Vector2( -527, -55 )
 nodes/Animation/node = SubResource( 13 )
 nodes/Animation/position = Vector2( -180, 100 )
 "nodes/Animation 2/node" = SubResource( 10 )
@@ -677,7 +677,7 @@ nodes/Die/position = Vector2( 440, 100 )
 nodes/IdleOrWalk/node = SubResource( 16 )
 nodes/IdleOrWalk/position = Vector2( 20, 100 )
 nodes/output/position = Vector2( 660, 100 )
-node_connections = [ "output", 0, "Die", "IdleOrWalk", 0, "Animation", "IdleOrWalk", 1, "Animation 4", "Die", 0, "Attacking", "Die", 1, "Animation 3", "Attacking", 0, "IdleOrWalk", "Attacking", 1, "Animation 2" ]
+node_connections = [ "output", 0, "Die", "Attacking", 0, "IdleOrWalk", "Attacking", 1, "Animation 2", "Die", 0, "Attacking", "Die", 1, "Animation 3", "IdleOrWalk", 0, "Animation", "IdleOrWalk", 1, "Animation 4" ]
 
 [node name="Enemy" type="KinematicBody" groups=["enemy"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
@@ -777,7 +777,7 @@ bones/16/enabled = true
 bones/16/bound_children = [  ]
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Bad_Eye/Armature/Skeleton"]
-transform = Transform( 0.999828, 0.0115824, 0.014478, -0.0115824, 0.999933, -8.38516e-05, -0.014478, -8.38528e-05, 0.999895, 1.11759e-08, 3.34915, 0.52744 )
+transform = Transform( 0.999895, 0.00903599, 0.011295, -0.00903599, 0.999959, -5.10329e-05, -0.011295, -5.10341e-05, 0.999936, 1.11759e-08, 3.34984, 0.52744 )
 bone_name = "Eye"
 
 [node name="Roundcube001" type="MeshInstance" parent="Bad_Eye/Armature/Skeleton/BoneAttachment"]
