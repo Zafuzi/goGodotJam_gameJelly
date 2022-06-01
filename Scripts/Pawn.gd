@@ -27,6 +27,7 @@ var MAX_HP = 30
 var initial_position
 var initial_rotation
 
+
 signal take_damage
 signal killed_enemy
 
@@ -37,6 +38,7 @@ func _ready():
 	connect("killed_enemy", self, "_on_killed_enemy")
 	initial_position = get_translation()
 	initial_rotation = get_rotation()
+	
 
 func _process(delta):
 	if currentState == STATES.DEAD:
@@ -66,6 +68,8 @@ func _process(delta):
 		if canAttack:
 			canAttack = false
 			enemy.emit_signal("take_damage")
+#			Sparrow: has no idea why this is giving null referance ?
+#			$AnimationTree.set("parameters/Attacking/active",true)
 
 func _physics_process(delta):
 	if currentState == STATES.DEAD:
