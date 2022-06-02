@@ -4,15 +4,16 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/healthbar.png-cf162c8ae01082d0fd460f9fa81eb4e2.s3tc.stex"
 path.etc2="res://.import/healthbar.png-cf162c8ae01082d0fd460f9fa81eb4e2.etc2.stex"
+path.etc="res://.import/healthbar.png-cf162c8ae01082d0fd460f9fa81eb4e2.etc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
+"imported_formats": [ "s3tc", "etc2", "etc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Materials/healthbar.png"
-dest_files=[ "res://.import/healthbar.png-cf162c8ae01082d0fd460f9fa81eb4e2.s3tc.stex", "res://.import/healthbar.png-cf162c8ae01082d0fd460f9fa81eb4e2.etc2.stex" ]
+dest_files=[ "res://.import/healthbar.png-cf162c8ae01082d0fd460f9fa81eb4e2.s3tc.stex", "res://.import/healthbar.png-cf162c8ae01082d0fd460f9fa81eb4e2.etc2.stex", "res://.import/healthbar.png-cf162c8ae01082d0fd460f9fa81eb4e2.etc.stex" ]
 
 [params]
 
