@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scenes/Soldier.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=2]
@@ -6,17 +6,19 @@
 [ext_resource path="res://Materials/blue.tres" type="Material" id=4]
 [ext_resource path="res://Scenes/Spawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/Base.gd" type="Script" id=6]
+[ext_resource path="res://Materials/floor.tres" type="Material" id=7]
 
-[sub_resource type="ProceduralSky" id=1]
-sky_top_color = Color( 0.972549, 0.690196, 0.662745, 1 )
-sky_horizon_color = Color( 0.956863, 0.862745, 0.858824, 1 )
-ground_bottom_color = Color( 0.109804, 0.0196078, 0.0196078, 1 )
-ground_horizon_color = Color( 0.466667, 0.101961, 0.101961, 1 )
-ground_curve = 0.3091
+[sub_resource type="ProceduralSky" id=15]
+sky_top_color = Color( 0.945098, 0.647059, 0.647059, 1 )
+sky_horizon_color = Color( 0.980392, 0.839216, 0.839216, 1 )
+ground_bottom_color = Color( 0.211765, 0.156863, 0.156863, 1 )
+ground_horizon_color = Color( 0.423529, 0.372549, 0.372549, 1 )
 
 [sub_resource type="Environment" id=2]
 background_mode = 2
-background_sky = SubResource( 1 )
+background_sky = SubResource( 15 )
+background_color = Color( 0.0862745, 0.00784314, 0.00784314, 1 )
+dof_blur_far_distance = 84.37
 
 [sub_resource type="CubeMesh" id=11]
 size = Vector3( 50, 10, 6 )
@@ -44,20 +46,17 @@ agent/radius = 1.0
 [sub_resource type="CubeMesh" id=6]
 size = Vector3( 50, 40, 200 )
 
-[sub_resource type="ConcavePolygonShape" id=7]
-data = PoolVector3Array( -25, 0.5, 75, 25, 0.5, 75, -25, -0.5, 75, 25, 0.5, 75, 25, -0.5, 75, -25, -0.5, 75, 25, 0.5, -75, -25, 0.5, -75, 25, -0.5, -75, -25, 0.5, -75, -25, -0.5, -75, 25, -0.5, -75, 25, 0.5, 75, 25, 0.5, -75, 25, -0.5, 75, 25, 0.5, -75, 25, -0.5, -75, 25, -0.5, 75, -25, 0.5, -75, -25, 0.5, 75, -25, -0.5, -75, -25, 0.5, 75, -25, -0.5, 75, -25, -0.5, -75, 25, 0.5, 75, -25, 0.5, 75, 25, 0.5, -75, -25, 0.5, 75, -25, 0.5, -75, 25, 0.5, -75, -25, -0.5, 75, 25, -0.5, 75, -25, -0.5, -75, 25, -0.5, 75, 25, -0.5, -75, -25, -0.5, -75 )
-
 [sub_resource type="ConcavePolygonShape" id=12]
 data = PoolVector3Array( -25, 0.5, 100, 25, 0.5, 100, -25, -0.5, 100, 25, 0.5, 100, 25, -0.5, 100, -25, -0.5, 100, 25, 0.5, -100, -25, 0.5, -100, 25, -0.5, -100, -25, 0.5, -100, -25, -0.5, -100, 25, -0.5, -100, 25, 0.5, 100, 25, 0.5, -100, 25, -0.5, 100, 25, 0.5, -100, 25, -0.5, -100, 25, -0.5, 100, -25, 0.5, -100, -25, 0.5, 100, -25, -0.5, -100, -25, 0.5, 100, -25, -0.5, 100, -25, -0.5, -100, 25, 0.5, 100, -25, 0.5, 100, 25, 0.5, -100, -25, 0.5, 100, -25, 0.5, -100, 25, 0.5, -100, -25, -0.5, 100, 25, -0.5, 100, -25, -0.5, -100, 25, -0.5, 100, 25, -0.5, -100, -25, -0.5, -100 )
 
+[sub_resource type="CubeMesh" id=16]
+size = Vector3( 50, 100, 400 )
+
 [node name="main" type="Spatial"]
 
-[node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.921938, 0.100251, 0.37414, -0.387339, 0.238615, 0.890523, 0, -0.965926, 0.258819, -11, 0, 0 )
-
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( -4.37114e-08, -0.5, 0.866025, 0, 0.866025, 0.5, -1, 2.18557e-08, -3.78552e-08, 80, 60, 0 )
-fov = 60.0
+transform = Transform( -4.37114e-08, -0.5, 0.866025, 0, 0.866025, 0.5, -1, 2.18557e-08, -3.78552e-08, 40, 40, 0 )
+fov = 90.0
 size = 100.0
 far = 300.0
 
@@ -120,16 +119,31 @@ navmesh = SubResource( 5 )
 [node name="MeshInstance" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0 )
 mesh = SubResource( 6 )
-material/0 = null
-
-[node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/MeshInstance"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/MeshInstance/StaticBody"]
-shape = SubResource( 7 )
+material/0 = ExtResource( 7 )
 
 [node name="StaticBody2" type="StaticBody" parent="Navigation/NavigationMeshInstance/MeshInstance"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/MeshInstance/StaticBody2"]
+shape = SubResource( 12 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 61.431, 0 )
+mesh = SubResource( 6 )
+material/0 = ExtResource( 7 )
+
+[node name="StaticBody2" type="StaticBody" parent="Navigation/NavigationMeshInstance/MeshInstance3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/MeshInstance3/StaticBody2"]
+shape = SubResource( 12 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 9, 0 )
+mesh = SubResource( 16 )
+material/0 = ExtResource( 7 )
+
+[node name="StaticBody2" type="StaticBody" parent="Navigation/NavigationMeshInstance/MeshInstance2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/MeshInstance2/StaticBody2"]
 shape = SubResource( 12 )
 
 [node name="SoldierSpawner" parent="Navigation" instance=ExtResource( 5 )]

@@ -42,7 +42,6 @@ func _ready():
 
 func _process(delta):
 	if currentState == STATES.DEAD:
-		$AnimationTree.set("Parameters/Die/Active", true)
 		return
 		
 	if enemy != null and enemy.hp <= 0:
@@ -69,8 +68,7 @@ func _process(delta):
 		if canAttack:
 			canAttack = false
 			enemy.emit_signal("take_damage")
-#			Sparrow: has no idea why this is giving null referance ?
-#			$AnimationTree.set("parameters/Attacking/active",true)
+			$AnimationTree.set("parameters/Attacking/active",true)
 
 func _physics_process(delta):
 	if currentState == STATES.DEAD:
@@ -111,7 +109,6 @@ func _on_AttackSphere_body_entered(body):
 		enemy = body
 
 func _on_take_damage():
-	print(hp)
 	hp -= 1
 	if $HealthBar:
 		$HealthBar.update(hp)
@@ -126,9 +123,8 @@ func die():
 	if enemy != null:
 		enemy.emit_signal("killed_enemy")
 	currentState = STATES.DEAD
+	$AnimationTree.set("Parameters/Die/Active", true)
 	hide()
-	set_translation(initial_position)
-	set_rotation(initial_rotation)
 	
 func isDead():
 	return currentState == STATES.DEAD
@@ -137,7 +133,10 @@ func makeAlive():
 	hp = MAX_HP
 	currentState = STATES.IDLE
 	show()
+	set_translation(initial_position)
+	set_rotation(initial_rotation)
 	$HealthBar.update(hp)
+	$AnimationTree.set("Parameters/Die/Active", false)
 
 
 func _on_AttackTimer_timeout():

@@ -713,7 +713,7 @@ parameters/Die/active = false
 parameters/IdleOrWalk/blend_amount = 1.0
 
 [node name="Bad_Eye" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -2.5, 0 )
 
 [node name="Armature" type="Spatial" parent="Bad_Eye"]
 
@@ -762,7 +762,7 @@ bones/8/name = "Eye"
 bones/8/parent = 1
 bones/8/rest = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11759e-08, 1.28747, 0.52744 )
 bones/8/enabled = true
-bones/8/bound_children = [  ]
+bones/8/bound_children = [ NodePath("BoneAttachment") ]
 bones/9/name = "UpperLip"
 bones/9/parent = 1
 bones/9/rest = Transform( 1, -5.68434e-14, 7.15257e-07, 6.78312e-07, 0.317234, -0.948347, -2.26903e-07, 0.948347, 0.317234, 1.11762e-08, 0.823095, 0.75943 )
@@ -805,7 +805,7 @@ bones/16/enabled = true
 bones/16/bound_children = [  ]
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Bad_Eye/Armature/Skeleton"]
-transform = Transform( 0.997936, -0.0401113, -0.0501391, 0.0401113, 0.999195, -0.00100661, 0.0501391, -0.00100661, 0.998742, 1.11759e-08, 3.36317, 0.52744 )
+transform = Transform( 0.976717, -0.134017, -0.167522, 0.134017, 0.990914, -0.0113576, 0.167522, -0.0113576, 0.985803, 1.11759e-08, 3.47217, 0.52744 )
 bone_name = "Eye"
 
 [node name="Roundcube001" type="MeshInstance" parent="Bad_Eye/Armature/Skeleton/BoneAttachment"]
