@@ -777,7 +777,7 @@ bones/16/enabled = true
 bones/16/bound_children = [  ]
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Bad_Eye/Armature/Skeleton"]
-transform = Transform( 0.999895, 0.00903599, 0.011295, -0.00903599, 0.999959, -5.10329e-05, -0.011295, -5.10341e-05, 0.999936, 1.11759e-08, 3.34984, 0.52744 )
+transform = Transform( 0.993945, -0.0686409, -0.0858011, 0.0686409, 0.997637, -0.00295367, 0.0858011, -0.00295367, 0.996308, 1.11759e-08, 3.37386, 0.52744 )
 bone_name = "Eye"
 
 [node name="Roundcube001" type="MeshInstance" parent="Bad_Eye/Armature/Skeleton/BoneAttachment"]
